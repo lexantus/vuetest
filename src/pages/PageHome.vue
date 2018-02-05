@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1 :class="$style.header">Welcome to app</h1>
-    <UserDateShow/>
-    <AggregationGraphShow/>
+    <h1 :class="$style.header">Статистика</h1>
+    <UserDateShow @getData="getData"/>
+    <AggregationGraphShow :data="d"/>
   </div>
 </template>
 
@@ -11,7 +11,17 @@
   import AggregationGraphShow from '@/components/AggregationGraphShow'
 
   export default {
-    components: {UserDateShow, AggregationGraphShow}
+    components: {UserDateShow, AggregationGraphShow},
+    methods: {
+      getData (eventData) {
+        this.d = eventData
+      }
+    },
+    data () {
+      return {
+        d: {result: [], date: '2017-07-07'}
+      }
+    }
   }
 </script>
 
